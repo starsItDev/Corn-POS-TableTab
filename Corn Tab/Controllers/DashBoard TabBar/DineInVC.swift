@@ -66,9 +66,10 @@ class DineInVC: UIViewController{
         segments.setTitleTextAttributes(attributes, for: .normal)
         itemcollectionView.delegate = self
         itemcollectionView.dataSource = self
-        itemcollectionView.reloadData()
+        
         hideSubView()
         userDefaults()
+        itemcollectionView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
@@ -100,6 +101,7 @@ class DineInVC: UIViewController{
             timeLbl.text = " \(currentTimeString)"
         }
     func userDefaults() {
+        
         if let savedData = UserDefaults.standard.data(forKey: "parsedDataKey"),
            let rows = try? JSONDecoder().decode([[MasterDetailRow]].self, from: savedData) {
             self.parsedRows = rows

@@ -133,6 +133,16 @@ class LoginVC: UIViewController {
                         UserDefaults.standard.set(WorkingDate, forKey: "WorkingDate")
                         UserDefaults.standard.set(accessToken, forKey: "Access_Token")
                         UserInfo.shared.isUserLoggedIn = true
+                        
+                        APIManager.makePOSTRequest { (data) in
+                            // Handle API response (including errors) and save data to UserDefaults
+                            if let dataToSave = try? JSONEncoder().encode(data) {
+                                UserDefaults.standard.set(dataToSave, forKey: "parsedDataKey")
+                            }
+                            
+                            // Dismiss loading indicator or navigate to your app's main screen
+                        }
+                        
                         //                        DispatchQueue.main.async {
                         //                            loadingAlert.dismiss(animated: true, completion: nil)
                         //                            let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -252,6 +252,7 @@ class TabBarVC: UIViewController {
                     
                 }
                 
+                
                 let totalAddOnPrice = selectedAddOnPrices.reduce(0, +)
                 
                 for orderItem in orderItems {
@@ -723,6 +724,7 @@ extension TabBarVC:UITabBarControllerDelegate ,UITabBarDelegate {
             let navigationController = UINavigationController(rootViewController: tabBarController!)
             navigationController.modalPresentationStyle = .fullScreen
             if let viewControllers = tabBarController?.viewControllers, viewControllers.count >= 3 {
+                
                 tabBarController?.selectedIndex = 3
             }
             UserDefaults.standard.set(3, forKey: "ServiceTypeID")

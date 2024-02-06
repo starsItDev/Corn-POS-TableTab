@@ -25,19 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
             
             // Show a loading indicator or splash screen
-        APIManager.makePOSTRequest { apidata in
-//            print(apidata)
-        }
-            DispatchQueue.global().async {
-                APIManager.makePOSTRequest { (data) in
-                    // Handle API response (including errors) and save data to UserDefaults
-                    if let dataToSave = try? JSONEncoder().encode(data) {
-                        UserDefaults.standard.set(dataToSave, forKey: "parsedDataKey")
-                    }
-                    
-                    // Dismiss loading indicator or navigate to your app's main screen
-                }
-            }
+//            DispatchQueue.global().async {
+//                APIManager.makePOSTRequest { (data) in
+//                                 // Handle API response (including errors) and save data to UserDefaults
+//                                 if let dataToSave = try? JSONEncoder().encode(data) {
+//                                     UserDefaults.standard.set(dataToSave, forKey: "parsedDataKey")
+//                                 }
+//
+//                                 // Dismiss loading indicator or navigate to your app's main screen
+//                             }
+//                         }
             return true
     }
 

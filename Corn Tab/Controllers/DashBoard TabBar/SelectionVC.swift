@@ -42,6 +42,12 @@ class SelectionVC: UIViewController{
        tableView.isHidden = true
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first != tableView{
+            tableView.isHidden = true
+        }
+    }
+    
     private func setupUI() {
             navigationController?.setNavigationBarHidden(true, animated: false)
             let boldFont = UIFont.boldSystemFont(ofSize: 20)
