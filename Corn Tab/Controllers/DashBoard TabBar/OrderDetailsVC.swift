@@ -103,6 +103,16 @@ class OrderDetailsVC: UIViewController {
         }
     }
     // MARK: - Button Action
+    @IBAction func OrderClearBtn(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "addedItems")
+        addedItems = UserDefaults.standard.array(forKey: "addedItems") as? [[String: String]] ?? []
+        itemCounts = addedItems.compactMap { Int($0["Qty"] ?? "0") }
+        tableView.reloadData()
+        calculateAndUpdateTotal()
+        orderProductLbl.text = " \(addedItems.count)"
+       
+            self.tableView.reloadData()
+    }
     @IBAction func placeOrderTap(_ sender: UIButton) {
         if addedItems.isEmpty {
             showAlert(
@@ -239,7 +249,6 @@ class OrderDetailsVC: UIViewController {
         
     }
 }
-
 // MARK: - TableView Delegate and DataSource
 extension OrderDetailsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -336,9 +345,7 @@ extension OrderDetailsVC {
         let titleText = titleLabelText
         let titlePrice = Double(titlePrice!)
         let quantityCount = Int(quantity!)
-        
-        
-        
+
         var addOnArr = [[String:Any]]()
         var addOnDict = [String: Any]()
         var parameters = [String: Any]()

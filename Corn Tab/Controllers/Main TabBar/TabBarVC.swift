@@ -110,6 +110,13 @@ class TabBarVC: UIViewController {
         tableViewBtn.tintColor = #colorLiteral(red: 0.9657021165, green: 0.4859523773, blue: 0.2453393936, alpha: 1)
         collectionViewBtn.tintColor = #colorLiteral(red: 0.4576840401, green: 0.4979689717, blue: 0.5107063055, alpha: 1)
     }
+    
+    @IBAction func logOutBtnTap(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let logINVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.navigationController?.pushViewController(logINVC, animated: true)
+    }
+    
     @IBAction func collectionViewBtn(_ sender: UIButton) {
         collectionView.isHidden = false
         tableView.isHidden = true
