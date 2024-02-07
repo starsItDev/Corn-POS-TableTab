@@ -18,4 +18,6 @@ class TabBarCVCell: UICollectionViewCell {
             cellView.layer.borderColor = #colorLiteral(red: 0.8596192002, green: 0.3426481783, blue: 0.2044148147, alpha: 1)
         }
     }
+    @IBOutlet weak var tableImg: UIImageView!
+    @IBOutlet weak var tableLbl: UILabel!
 }

@@ -40,6 +40,7 @@ class OrderDetailsVC: UIViewController {
     var isDeleteButtonHidden: Bool = false
     var isComingFromEdit = false
     var receivedItemCount: String? = nil
+    var customerID = 0
     
     
     // MARK: - View Lifecycle
@@ -369,6 +370,7 @@ extension OrderDetailsVC {
         let userid = UserDefaults.standard.integer(forKey: "UserId")
         orderDict["UserID"] = userid
         orderDict["OrderTakeId"] = userid
+        orderDict["CustomerID"] = customerID
         orderDict["TableID"] = Int(selectedTableID )
         orderDict["GrossAmount"] = self.subtotalPrice
         orderDict["GSTAmount"] = self.taxAmount
@@ -536,6 +538,7 @@ extension OrderDetailsVC {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             UserDefaults.standard.removeObject(forKey: "DealCount")
                             UserDefaults.standard.removeObject(forKey: "selectedIndexPathsForSegmentsCount")
+                            UserDefaults.standard.removeObject(forKey: "addedItems")
                             if let nextViewController = storyboard.instantiateViewController(withIdentifier: "TabBarVC") as? TabBarVC {
                                 self.navigationController?.pushViewController(nextViewController, animated: true)
                             }

@@ -42,6 +42,15 @@ class TabBarVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Okkkkk")
+        tabBar.selectedItem = dashboardTabbar
+        let dineIn = UserDefaults.standard.integer(forKey: "Can_DineIn")
+        if dineIn == 0{
+            dineInTabbar.isEnabled = false
+        }
+        let takeAway = UserDefaults.standard.integer(forKey: "Can_TakeAway")
+        if takeAway == 0{
+            takeaWayTabbar.isEnabled = false
+        }
         tabBar.delegate = self
         tableView.isHidden = true
         //        attendNameLbl.text = userName
@@ -545,15 +554,22 @@ extension TabBarVC:  UICollectionViewDataSource, UICollectionViewDelegateFlowLay
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TabBarCVCell
         let rowData = dataSource[indexPath.item]
         
-        if let tableDetailData = rowData.tableDetail?.data(using: .utf8),
-           let jsonArray = try? JSONSerialization.jsonObject(with: tableDetailData, options: []) as? [[String: Any]] {
-            let tableNames = jsonArray.compactMap { $0["TableName"] as? String }
-            let concatenatedNames = tableNames.joined(separator: "+")
-            cell.tableNoLbl.text = concatenatedNames
-        } else {
-            cell.tableNoLbl.text = ""
+        if rowData.serviceTypeID == 3{
+            cell.tableNoLbl.text = "Takeaway"
+            cell.tableLbl.isHidden = true
+            //cell.tableImg.image = #imageLiteral(resourceName: "Icon metro-bin")
         }
-        
+        else{
+            cell.tableLbl.isHidden = false
+            if let tableDetailData = rowData.tableDetail?.data(using: .utf8),
+               let jsonArray = try? JSONSerialization.jsonObject(with: tableDetailData, options: []) as? [[String: Any]] {
+                let tableNames = jsonArray.compactMap { $0["TableName"] as? String }
+                let concatenatedNames = tableNames.joined(separator: "+")
+                cell.tableNoLbl.text = concatenatedNames
+            } else {
+                cell.tableNoLbl.text = ""
+            }
+        }
         cell.orderNoLbl.text = rowData.orderNO
         
         var date = rowData.createDateTime?.components(separatedBy: "T")
@@ -638,15 +654,22 @@ extension TabBarVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TabBarTVCell
         let rowData = dataSource[indexPath.section]
-        if let tableDetailData = rowData.tableDetail?.data(using: .utf8),
-           let jsonArray = try? JSONSerialization.jsonObject(with: tableDetailData, options: []) as? [[String: Any]] {
-            // Extract table names and join them with a "+"
-            let tableNames = jsonArray.compactMap { $0["TableName"] as? String }
-            let concatenatedNames = tableNames.joined(separator: "+")
-            
-            cell.tableNoLbl.text = concatenatedNames
-        } else {
-            cell.tableNoLbl.text = "" // Handle invalid JSON data or missing TableName
+        if rowData.serviceTypeID == 3{
+            cell.tableLbl.text = "Takeaway"
+            cell.tableNoLbl.text = ""
+        }
+        else{
+//            cell.tableNoLbl.isHidden = false
+            if let tableDetailData = rowData.tableDetail?.data(using: .utf8),
+               let jsonArray = try? JSONSerialization.jsonObject(with: tableDetailData, options: []) as? [[String: Any]] {
+                // Extract table names and join them with a "+"
+                let tableNames = jsonArray.compactMap { $0["TableName"] as? String }
+                let concatenatedNames = tableNames.joined(separator: "+")
+                
+                cell.tableNoLbl.text = concatenatedNames
+            } else {
+                cell.tableNoLbl.text = "" // Handle invalid JSON data or missing TableName
+            }
         }
         cell.orderNoLbl.text = rowData.orderNO
         

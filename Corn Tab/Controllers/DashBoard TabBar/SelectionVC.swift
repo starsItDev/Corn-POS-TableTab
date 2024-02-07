@@ -292,17 +292,24 @@ extension SelectionVC: UITableViewDataSource, UITableViewDelegate {
         if searchBarIsEmpty() {
             if indexPath.row < searchBarValue.count {
                 selectedCustomerName = searchBarValue[indexPath.row].customerName ?? "N/A"
+                if let tabBarController = self.tabBarController,
+                   let orderDetailVC = tabBarController.viewControllers?[2] as? OrderDetailsVC {
+                    orderDetailVC.customerID = searchBarValue[indexPath.row].customerID ?? 0
+                }
             } else {
                 selectedCustomerName = "N/A"
             }
         } else {
             if indexPath.row < filteredData.count {
                 selectedCustomerName = filteredData[indexPath.row].customerName ?? "N/A"
+                if let tabBarController = self.tabBarController,
+                   let orderDetailVC = tabBarController.viewControllers?[2] as? OrderDetailsVC {
+                    orderDetailVC.customerID = filteredData[indexPath.row].customerID ?? 0
+                }
             } else {
                 selectedCustomerName = "N/A"
             }
         }
-
         
         searchBar.text = selectedCustomerName
         tableView.isHidden = true
@@ -337,7 +344,14 @@ extension SelectionVC: UISearchBarDelegate {
         }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterTableView(for: searchText)
+        if searchText == ""{
+            if let tabBarController = self.tabBarController,
+               let orderDetailVC = tabBarController.viewControllers?[2] as? OrderDetailsVC {
+                orderDetailVC.customerID = 0
+            }
+        }
     }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearchBarActive = false
         tableView.isHidden = true
@@ -345,6 +359,7 @@ extension SelectionVC: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.resignFirstResponder()
         filterTableView(for: "")
+        
     }
     private func searchBarIsEmpty() -> Bool {
         return searchBar.text?.isEmpty ?? true

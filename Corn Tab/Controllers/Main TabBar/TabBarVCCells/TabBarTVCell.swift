@@ -13,6 +13,7 @@ class TabBarTVCell: UITableViewCell {
     @IBOutlet weak var orderNoLbl: UILabel!
     @IBOutlet weak var editBtn: UIButton!
     
+    @IBOutlet weak var tableLbl: UILabel!
     @IBOutlet weak var cellView: UIView!{
         didSet {
             cellView.layer.borderWidth = 1.0

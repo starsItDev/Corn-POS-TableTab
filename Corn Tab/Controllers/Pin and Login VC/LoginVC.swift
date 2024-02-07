@@ -128,10 +128,16 @@ class LoginVC: UIViewController {
                         let userId = userinfo?["UserId"] as? Int
                         let distributionName = userinfo?["DistributionName"] as? String
                         let WorkingDate = userinfo?["WorkingDate"] as? String
+                        let dineIn = userinfo?["Can_DineIn"] as? Int
+                        let delivery = userinfo?["Can_Delivery"] as? Int
+                        let takeAway = userinfo?["Can_TakeAway"] as? Int
                         UserDefaults.standard.set(userId, forKey: "UserId")
                         UserDefaults.standard.set(username, forKey: "UserName")
                         UserDefaults.standard.set(WorkingDate, forKey: "WorkingDate")
                         UserDefaults.standard.set(accessToken, forKey: "Access_Token")
+                        UserDefaults.standard.set(dineIn, forKey: "Can_DineIn")
+                        UserDefaults.standard.set(delivery , forKey: "Can_Delivery")
+                        UserDefaults.standard.set(takeAway, forKey: "Can_TakeAway")
                         UserInfo.shared.isUserLoggedIn = true
                         
                         APIManager.makePOSTRequest { (data) in
