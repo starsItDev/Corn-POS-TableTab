@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6x0-lp-6a2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -264,7 +264,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYl-F1-6J4">
                                                 <rect key="frame" x="150" y="652" width="434" height="95"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="subm@rine" placeholder="••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FzW-mF-TtI">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FzW-mF-TtI">
                                                         <rect key="frame" x="25" y="36" width="243" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -2013,25 +2013,8 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="YsY-ue-J0Z">
                                                 <rect key="frame" x="100" y="830" width="544" height="60"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujl-0H-Dav">
-                                                        <rect key="frame" x="0.0" y="0.0" width="257" height="60"/>
-                                                        <color key="backgroundColor" red="0.94091451169999996" green="0.57461225989999998" blue="0.16836783289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="tintColor" name="Color"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=" Clear Order">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <integer key="value" value="12"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="OrderClearBtn:" destination="mP9-yI-XTd" eventType="touchUpInside" id="rwr-lp-Fn8"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-RZ-u5f">
-                                                        <rect key="frame" x="287" y="0.0" width="257" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="257" height="60"/>
                                                         <color key="backgroundColor" red="0.85961920020000004" green="0.34264817829999999" blue="0.2044148147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="xF6-nd-gS2"/>
@@ -2048,6 +2031,23 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="placeOrderTap:" destination="mP9-yI-XTd" eventType="touchUpInside" id="sGc-sX-WKA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujl-0H-Dav">
+                                                        <rect key="frame" x="287" y="0.0" width="257" height="60"/>
+                                                        <color key="backgroundColor" red="0.94091451169999996" green="0.57461225989999998" blue="0.16836783289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" name="Color"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title=" Clear Order">
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <integer key="value" value="12"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="OrderClearBtn:" destination="mP9-yI-XTd" eventType="touchUpInside" id="rwr-lp-Fn8"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -2225,8 +2225,8 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="power" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZId-hb-66j">
-                                        <rect key="frame" x="674" y="45" width="30" height="29.5"/>
-                                        <color key="tintColor" red="0.95244246720000003" green="0.93995115666682616" blue="0.072234712539999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="674" y="50" width="30" height="29.5"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="rzo-me-gLF"/>
                                             <constraint firstAttribute="height" constant="30" id="una-2g-S3p"/>
@@ -2254,7 +2254,7 @@
                                     <constraint firstItem="4G0-N8-XmI" firstAttribute="leading" secondItem="ndY-pb-8Xd" secondAttribute="leading" constant="30" id="Gmd-6R-1Ed"/>
                                     <constraint firstAttribute="height" constant="200" id="MR0-r7-Slf"/>
                                     <constraint firstAttribute="trailing" secondItem="jQR-l1-BbD" secondAttribute="trailing" constant="30" id="R4P-O3-at8"/>
-                                    <constraint firstItem="ZId-hb-66j" firstAttribute="top" secondItem="ndY-pb-8Xd" secondAttribute="top" constant="45" id="UPO-aY-fTm"/>
+                                    <constraint firstItem="ZId-hb-66j" firstAttribute="top" secondItem="ndY-pb-8Xd" secondAttribute="top" constant="50" id="UPO-aY-fTm"/>
                                     <constraint firstItem="T3W-hj-QTs" firstAttribute="top" secondItem="ndY-pb-8Xd" secondAttribute="top" constant="35" id="XG6-Uc-QRd"/>
                                     <constraint firstItem="4G0-N8-XmI" firstAttribute="leading" secondItem="bdY-8u-OFF" secondAttribute="leading" id="Zro-it-kcl"/>
                                     <constraint firstAttribute="trailing" secondItem="T3W-hj-QTs" secondAttribute="trailing" constant="30" id="dKb-fY-VrV"/>

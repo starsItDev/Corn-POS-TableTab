@@ -121,9 +121,10 @@ class TabBarVC: UIViewController {
     }
     
     @IBAction func logOutBtnTap(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let logINVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-        self.navigationController?.pushViewController(logINVC, animated: true)
+        self.navigationController?.popViewController(animated: false)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let logINVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+//        self.navigationController?.pushViewController(logINVC, animated: true)
     }
     
     @IBAction func collectionViewBtn(_ sender: UIButton) {
@@ -567,7 +568,7 @@ extension TabBarVC:  UICollectionViewDataSource, UICollectionViewDelegateFlowLay
                 let concatenatedNames = tableNames.joined(separator: "+")
                 cell.tableNoLbl.text = concatenatedNames
             } else {
-                cell.tableNoLbl.text = ""
+                cell.tableNoLbl.text = "N/A"
             }
         }
         cell.orderNoLbl.text = rowData.orderNO
